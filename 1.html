@@ -1,14 +1,42 @@
-# animate
-### 前言
-偶然间看到一些官网的文字的动画效果，滚动页面，文字滑出，感觉效果很好看，于是就想看一下是怎么实现的，发现是用css3属性实现的
+<!DOCTYPE html>
+<html lang="en">
 
-于是就有了这个练习demo
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 
-主要是想看一下实现的过程
+</head>
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" /> -->
+<style>
+    #div1 {
+        /* background: red; */
+        width: 100%;
+        height: 1300px;
+    }
 
-主要的css代码如下
-```
-.bounceInLeft {
+    #div3 {
+        height: 1000px;
+    }
+
+    #div2 {
+        transform: translate3d(0, 0, 0);
+        /* transform: translate3d(0, 30px, 0); */
+        transition-delay: .5s;
+        -webkit-transition-delay: .5s;
+        /* animation: myfirst 5s; */
+        /* -webkit-transition: -webkit-transform 700ms cubic-bezier(0.25, 0.46, 0.33, 0.98), opacity 700ms cubic-bezier(0.25, 0.46, 0.33, 0.98); */
+    }
+
+    /* 
+    #div2:hover {
+        transform: translate3d(0, 50px, 0);
+    } */
+
+
+
+    .bounceInLeft {
         -webkit-animation-name: bounceInLeft;
         animation-name: bounceInLeft;
         margin-left: 100px;
@@ -96,15 +124,15 @@
             transform: translate3d(0, 0, 0);
         }
     }
-    ```
-    当然要是你自己不想写，还有一个animate的动画库https://daneden.github.io/animate.css/
+</style>
 
-    有很多动画效果可以使用，只要引用css文件，并添加相应的class名字就可以了
-
-    官网的一些动画效果，我发现是滚动到位置时才会触发动画，这个时候就需要我们监听滚动事件，来添加class
-
-    代码如下
-    ```
+<body>
+    <div id='div1'>
+        <div id="div3"></div>
+        <div id="div2"> 123456</div>
+    </div>
+</body>
+<script>
     window.addEventListener('scroll', function () {
         var div = document.getElementById('div2');
         var top = div.getBoundingClientRect().top;
@@ -113,5 +141,7 @@
             div.className = "bounceInLeft"
         }
     }, true);
-    ```
-    这样加载到可视窗口，就会有相应的动画效果。
+
+</script>
+
+</html>
